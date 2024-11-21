@@ -4,5 +4,22 @@
  * @returns {function}
  */
 module.exports.primeNumbers = function primeNumbers(highestNumber) {
-  throw new Error('Not implemented'); // remove me and write a solution
+  const func = (first, last) => {
+    let arr = [];
+    let npm = true;
+    for (let i = first; i < last + 1; i++) {
+      for (let j = 2; j < Math.sqrt(i) + 1; j++) {
+        if (i % j === 0 && i !== j) {
+          npm = false;
+        }
+      }
+      if (npm === true) {
+        arr.push(i);
+      }
+      npm = true;
+    }
+    return arr;
+  };
+  return func;
 };
+

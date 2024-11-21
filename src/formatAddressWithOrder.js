@@ -9,5 +9,8 @@
  * @returns {function}
  */
 module.exports.formatAddressWithOrder = function formatAddressWithOrder(order) {
-  throw new Error('Not implemented'); // remove me and write a solution
+  const func = adress => {
+    return `${adress[order[0]]}, ${adress[order[1]]}, ${adress[order[2]]}, ${adress[order[3]]}, ${adress[order[4]]}, ${adress[order[5]]}`;
+  };
+  return func;
 };
