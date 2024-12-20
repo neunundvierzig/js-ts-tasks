@@ -3,6 +3,24 @@
  * @param {Array<Promise>} promisesArray
  * @returns Promise
  */
-module.exports.all = function all(promisesArray) {
-  throw new Error('Not implemented'); // remove me and write your code
+module.exports.all = function all(promisesArray)
+{
+  const promisesAll = new Promise((resolve, reject) =>
+  {
+    const results = [];
+    for (let i = 0; i < promisesArray.length; i++)
+    {
+      promisesArray[i]
+        .then(result =>
+        {
+          results[i] = result;
+          results.length === promisesArray.length ? resolve(results) : null;
+        })
+        .catch(error =>
+        {
+          reject(error);
+        });
+    }
+  });
+  return promisesAll;
 };
