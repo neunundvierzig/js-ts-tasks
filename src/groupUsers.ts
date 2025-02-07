@@ -1,15 +1,36 @@
 /**
- * Write a function to group two types of users into EMPLOYEE and CONTRACTOR groups
+ * Function to categorize users into two groups: EMPLOYEE and CONTRACTOR
  *
- * A function should return an object consists of two arrays of grouped users:
+ * The function returns an object with two arrays:
  * {
- *   employees: [...]
+ *   employees: [...],
  *   contractors: [...]
  * }
- * @param {Array<unknown>} users
- * @returns {Object<employees: Array<any>, contractors: Array<any>>}
+ * @returns {Object<{ employees: Array<any>, contractors: Array<any> }>}
  */
-module.exports.groupUsers = function (users: Array<unknown>): Record<'employees' | 'contractors', Array<unknown>> {
-  // replace Array<unknown> with your own types
-  throw new Error('Not implemented'); // delete this line and write your code
+
+interface Person {
+  type: 'EMPLOYEE' | 'CONTRACTOR';
+}
+
+type UserGroups = {
+  employees: Person[];
+  contractors: Person[];
+};
+
+module.exports.organizeUsers = function (list: Person[]): UserGroups {
+  const result: UserGroups = { employees: [], contractors: [] };
+
+  for (const individual of list) {
+    switch (individual.type) {
+      case 'EMPLOYEE':
+        result.employees.push(individual);
+        break;
+      case 'CONTRACTOR':
+        result.contractors.push(individual);
+        break;
+    }
+  }
+
+  return result;
 };
